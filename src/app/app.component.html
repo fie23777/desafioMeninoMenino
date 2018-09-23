@@ -1,5 +1,19 @@
+<button mat-button [matMenuTriggerFor]="cliente">Menu</button>
 
-<a href="/cliente">Cliente</a>
+<mat-menu #cliente="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="clienteList">Lista de Cliente</button>
+  <button mat-menu-item [matMenuTriggerFor]="consumidor">Lista de Consumidor</button>
+</mat-menu>
+
+<mat-menu #clienteList="matMenu">
+  <button mat-menu-item><a href="/cliente">Pessoa fisica</a></button>
+  <button mat-menu-item>Pessoa juridica</button>
+</mat-menu>
+
+<mat-menu #consumidor="matMenu">
+  <button mat-menu-item>Consumidor final</button>
+  <button mat-menu-item>consumidor</button>
+</mat-menu>
 <router-outlet></router-outlet>
 
 

@@ -9,12 +9,23 @@ import { Cliente } from '../modal/cliente';
 })
 export class ClienteComponent implements OnInit {
   conteudo: Cliente[] = [];
+  clicado: any;
 
   visivel: boolean = false;
 
-  toggle(){
-    console.log("passou aqui")
-   this.visivel = !this.visivel;
+  toggle(clicado: any){
+    this.clicado = clicado;
+
+  if(this.clicado == clicado && !this.visivel){
+    this.visivel = true
+
+  }else if(this.clicado == clicado && this.visivel){
+    this.visivel = false;
+  }else{
+    this.visivel = false;
+    this.clicado = clicado;
+  }
+   
   }
   
   constructor(private service: ClienteService) { }

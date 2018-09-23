@@ -13,20 +13,26 @@
                 <b>Nome:</b>
                 <div>{{cliente.nome}}</div>
             </div>
+            <div class="verdetalhes" *ngIf="!visivel || (visivel && cliente.id != clicado  ) ">
+                <div><a (click)="toggle(cliente.id)">Ver detalhes...</a> </div>
+            </div>
         </div>
-        <div>
-            <div><a (click)="toggle()">Ver detalhes...</a> </div>
+        <div *ngIf="visivel && cliente.id == clicado ">
+            <div class="row">
+                <div class="col-md-6">
+                    <b>e-mail:</b>
+                    <div>{{cliente.email}}</div>
+                </div>
+                <div class="col-md-6">
+                    <b>telefone:</b>
+                    <div>{{cliente.telefone}}</div>
+                </div>
+                <div class="verdetalhes">
+                    <div><a (click)="toggle(cliente.id)">Ocultar detalhes...</a> </div>
+                 </div>
+          </div>
         </div>
-         <div class="row" *ngIf="visivel">
-              <div class="col-md-6">
-                  <b>e-mail:</b>
-                  <div>{{cliente.email}}</div>
-              </div>
-              <div class="col-md-6">
-                  <b>telefone:</b>
-                  <div>{{cliente.telefone}}</div>
-              </div>
-        </div>
+
       </div>
     </div>
     <pagination-controls (pageChange)="p = $event"
