@@ -1,0 +1,36 @@
+
+<div class="container">
+    <h1>Lista de clientes</h1>
+
+    <div *ngFor="let cliente of conteudo | paginate: { itemsPerPage: 3, currentPage: p}">
+      <div class="divConteudo">
+        <div class="row">
+            <div class="col-md-6">
+                <b>ID:</b>
+                <div>{{cliente.id}}</div>
+            </div>
+            <div class="col-md-6">
+                <b>Nome:</b>
+                <div>{{cliente.nome}}</div>
+            </div>
+        </div>
+        <div>
+            <div><a (click)="toggle()">Ver detalhes...</a> </div>
+        </div>
+         <div class="row" *ngIf="visivel">
+              <div class="col-md-6">
+                  <b>e-mail:</b>
+                  <div>{{cliente.email}}</div>
+              </div>
+              <div class="col-md-6">
+                  <b>telefone:</b>
+                  <div>{{cliente.telefone}}</div>
+              </div>
+        </div>
+      </div>
+    </div>
+    <pagination-controls (pageChange)="p = $event"
+          previousLabel="Anterior"
+          nextLabel="Próximo"
+    ></pagination-controls>
+</div>
